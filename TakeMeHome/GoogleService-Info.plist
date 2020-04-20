@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>798495185490-58tcjbo21rdkiuq20uqguggq97m2pacm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.798495185490-58tcjbo21rdkiuq20uqguggq97m2pacm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAefF8aaqi3m2_TjAI81icNhlu-jlVXLYc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>798495185490</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.tiffanyobi.TakeMeHome</string>
+	<key>PROJECT_ID</key>
+	<string>takemehomeapp-9e4e4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>takemehomeapp-9e4e4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:798495185490:ios:3bb424a59de890285e1d8b</string>
+	<key>DATABASE_URL</key>
+	<string>https://takemehomeapp-9e4e4.firebaseio.com</string>
+</dict>
+</plist>
