@@ -220,26 +220,47 @@
                                     <action selector="confirmButtonPressed:" destination="ecu-Mb-fb6" eventType="touchUpInside" id="JuU-SW-a1k"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IOh-5u-Qhh">
+                                <rect key="frame" x="20" y="332" width="28.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XBS-oY-0dA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Po8-9X-CyS">
+                                <rect key="frame" x="78" y="330" width="316" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="f4L-ZF-3py" firstAttribute="leading" secondItem="9qD-ME-zwe" secondAttribute="trailing" constant="8" id="5a6-7P-Mri"/>
                             <constraint firstItem="f4L-ZF-3py" firstAttribute="centerY" secondItem="9qD-ME-zwe" secondAttribute="centerY" id="6sL-4W-FSy"/>
                             <constraint firstItem="IWY-Et-XSW" firstAttribute="trailing" secondItem="uJ2-WY-3Pa" secondAttribute="trailing" constant="20" id="7q4-nj-4f1"/>
+                            <constraint firstItem="Po8-9X-CyS" firstAttribute="centerY" secondItem="IOh-5u-Qhh" secondAttribute="centerY" id="Fqp-FS-2YN"/>
                             <constraint firstItem="Q7B-3P-XNT" firstAttribute="centerY" secondItem="hdK-K3-PGw" secondAttribute="centerY" id="HX8-fu-2PQ"/>
+                            <constraint firstItem="Po8-9X-CyS" firstAttribute="centerX" secondItem="f4L-ZF-3py" secondAttribute="centerX" id="M0S-aQ-thc"/>
                             <constraint firstItem="9qD-ME-zwe" firstAttribute="top" secondItem="uJ2-WY-3Pa" secondAttribute="bottom" constant="50" id="MEW-dS-NEo"/>
                             <constraint firstItem="uJ2-WY-3Pa" firstAttribute="leading" secondItem="IWY-Et-XSW" secondAttribute="leading" constant="20" id="Pxi-1w-sNf"/>
                             <constraint firstItem="9qD-ME-zwe" firstAttribute="leading" secondItem="IWY-Et-XSW" secondAttribute="leading" constant="20" id="Sk4-2c-XfO"/>
                             <constraint firstItem="f4L-ZF-3py" firstAttribute="leading" secondItem="IWY-Et-XSW" secondAttribute="leading" constant="78" id="ZSO-BB-XPz"/>
+                            <constraint firstItem="IWY-Et-XSW" firstAttribute="trailing" secondItem="Po8-9X-CyS" secondAttribute="trailing" constant="20" id="d0L-ze-K57"/>
                             <constraint firstItem="uJ2-WY-3Pa" firstAttribute="top" secondItem="IWY-Et-XSW" secondAttribute="top" constant="100" id="fpf-tE-Y00"/>
                             <constraint firstItem="Q7B-3P-XNT" firstAttribute="centerX" secondItem="hdK-K3-PGw" secondAttribute="centerX" id="ggT-G1-uRm"/>
+                            <constraint firstItem="IOh-5u-Qhh" firstAttribute="leading" secondItem="IWY-Et-XSW" secondAttribute="leading" constant="20" id="oX5-2H-Lff"/>
                             <constraint firstItem="IWY-Et-XSW" firstAttribute="trailing" secondItem="f4L-ZF-3py" secondAttribute="trailing" constant="20" id="qoc-Ob-CxO"/>
+                            <constraint firstItem="IOh-5u-Qhh" firstAttribute="top" secondItem="9qD-ME-zwe" secondAttribute="bottom" constant="20" id="t6G-pU-Hzn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IWY-Et-XSW"/>
                     </view>
                     <navigationItem key="navigationItem" id="mJu-lp-tFV"/>
                     <connections>
                         <outlet property="nameTextField" destination="f4L-ZF-3py" id="Y2n-7O-JCo"/>
+                        <outlet property="pinLabel" destination="IOh-5u-Qhh" id="sZ9-9z-Mhs"/>
+                        <outlet property="pinTextField" destination="Po8-9X-CyS" id="mSa-nc-dsF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m1a-7c-BUu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

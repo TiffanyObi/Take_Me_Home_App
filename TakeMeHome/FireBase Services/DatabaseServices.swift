@@ -18,6 +18,7 @@ class DatabaseService {
     public var hasGardian = false
     public var email = ""
     public var password = ""
+    public var pin = ""
     
     public func createDatabaseUser(hasGuardian: String, authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let email = authDataResult.user.email else {
@@ -28,7 +29,8 @@ class DatabaseService {
             .setData(["email" : email,
                       "createdDate": Timestamp(date: Date()),
                       "userId": authDataResult.user.uid,
-                      "hasGuaridan":hasGuardian]) { (error) in
+                      "hasGuaridan":hasGuardian,
+                      "pin": pin]) { (error) in
                         
                         if let error = error {
                             completion(.failure(error))
@@ -38,7 +40,8 @@ class DatabaseService {
         }
     }
     
-    func updateDatabaseUser(name: String,
+    func updateDatabaseUser(pin: String,
+                            name: String,
                             address: String,
                             zipcode: String,
                             coordinates: String,
@@ -53,6 +56,15 @@ class DatabaseService {
                                                 } else {
                                                     completion(.success(true))
                                                 }
+        }
+    }
+    
+    func signoutButtonPressed() {
+        do {
+            try Auth.auth().signOut()
+            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
+        } catch {
+            fatalError("Couldn't sign out")
         }
     }
     
