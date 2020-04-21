@@ -54,7 +54,6 @@ class DatabaseService {
                                                     completion(.success(true))
                                                 }
         }
-    }
-    
+    }    
     
 }
