@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginTypeDescriptionLabel: UILabel!
     
+    private var db = DatabaseService.shared
+    private var authSession = AuthenticationService()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +25,26 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        db.email = email
+        db.password = password
+        
         if loginButton.titleLabel?.text == "Log in" {
-            UIViewController .showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "AppStateViewController")
+            authSession.signExistingUser(email: email, password: password) { [weak self] (result) in
+              switch result {
+              case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.showAlert(title: "Please enter valid email/password", message: error.localizedDescription)
+                }
+              case .success:
+                DispatchQueue.main.async {
+                    UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "UserViewController")
+                }
+              }
+            }
+            
         } else {
             UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "SelectionViewController")
         }

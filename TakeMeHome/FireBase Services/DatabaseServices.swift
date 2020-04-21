@@ -13,10 +13,13 @@ import FirebaseAuth
 class DatabaseService {
     
     static let usersCollection = "users"
-    
+    static let shared = DatabaseService()
     private let db = Firestore.firestore()
+    public var hasGardian = false
+    public var email = ""
+    public var password = ""
     
-    public func createDatabaseUser(authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
+    public func createDatabaseUser(hasGuardian: String, authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let email = authDataResult.user.email else {
             return
         }
@@ -24,7 +27,8 @@ class DatabaseService {
             .document(authDataResult.user.uid)
             .setData(["email" : email,
                       "createdDate": Timestamp(date: Date()),
-                      "userId": authDataResult.user.uid]) { (error) in
+                      "userId": authDataResult.user.uid,
+                      "hasGuaridan":hasGuardian]) { (error) in
                         
                         if let error = error {
                             completion(.failure(error))
@@ -34,9 +38,7 @@ class DatabaseService {
         }
     }
     
-    func updateDatabaseUser(displayName: String,
-                            photoURL: String,
-                            name: String,
+    func updateDatabaseUser(name: String,
                             address: String,
                             zipcode: String,
                             coordinates: String,
@@ -45,8 +47,7 @@ class DatabaseService {
                             completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
-            .document(user.uid).updateData(["photoURL" : photoURL,
-                                            "displayName" : displayName]) { (error) in
+            .document(user.uid).updateData(["name": name]) { (error) in
                                                 if let error = error {
                                                     completion(.failure(error))
                                                 } else {
