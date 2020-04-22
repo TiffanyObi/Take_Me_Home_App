@@ -10,16 +10,36 @@ import UIKit
 
 class UserViewController: UIViewController {
 
-    var db = DatabaseService.shared
+    private var db = DatabaseService.shared
+    private var authSession = AuthenticationService()
+    
+    private var userInfo: UserModel! {
+        didSet {
+            print(userInfo.username)
+            print(userInfo.email)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchUserInfo()
     }
     
     @IBAction func optionButtonPressed(_ sender: UIButton) {
-        db.signoutButtonPressed()
+        authSession.signoutCurrentUser()
+    }
+    
+    private func fetchUserInfo() {
+        db.fetchUserInfo { (result) in
+            switch result {
+            case .failure(let error):
+                fatalError("\(error.localizedDescription)")
+            case .success(let userData):
+                DispatchQueue.main.async {
+                    self.userInfo = userData
+                }
+            }
+        }
     }
     
 }

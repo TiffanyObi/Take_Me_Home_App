@@ -31,4 +31,13 @@ class AuthenticationService {
         }
     }
     
+    func signoutCurrentUser() {
+        do {
+            try Auth.auth().signOut()
+            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
+        } catch {
+            fatalError("Couldn't sign out")
+        }
+    }
+    
 }

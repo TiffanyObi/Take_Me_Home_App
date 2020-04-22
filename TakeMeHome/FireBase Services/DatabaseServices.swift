@@ -20,7 +20,8 @@ class DatabaseService {
     public var password = ""
     public var pin = ""
     
-    public func createDatabaseUser(hasGuardian: String, authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
+    
+    public func createDatabaseUser(hasGuardian: String,authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let email = authDataResult.user.email else {
             return
         }
@@ -40,33 +41,40 @@ class DatabaseService {
         }
     }
     
+
     func updateDatabaseUser(pin: String,
-                            name: String,
+                            displayName: String?,
+                            photoURL: String?,
+                            username: String,
                             address: String,
                             zipcode: String,
-                            coordinates: String,
-                            guardianName: String,
-                            guardianPhone: String,
+                            coordinates: String?,
+                            guardianName: String?,
+                            guardianPhone: String?,
                             completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
-            .document(user.uid).updateData(["name": name]) { (error) in
-                                                if let error = error {
-                                                    completion(.failure(error))
-                                                } else {
-                                                    completion(.success(true))
-                                                }
+            .document(user.uid).updateData([
+                "userID": user.uid,
+                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": username, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(true))
+                    }
         }
     }
     
-    func signoutButtonPressed() {
-        do {
-            try Auth.auth().signOut()
-            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
-        } catch {
-            fatalError("Couldn't sign out")
+    func fetchUserInfo(completion: @escaping (Result<UserModel, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        db.collection(DatabaseService.usersCollection).document(user.uid).getDocument { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot?.data() {
+                let userInfo = UserModel(snapshot)
+                completion(.success(userInfo))
+            }
         }
     }
-    
-    
 }
