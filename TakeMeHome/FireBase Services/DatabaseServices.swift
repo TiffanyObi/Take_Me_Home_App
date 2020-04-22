@@ -38,22 +38,24 @@ class DatabaseService {
         }
     }
     
-    func updateDatabaseUser(name: String,
+    func updateDatabaseUser(displayName: String?,
+                            photoURL: String?,
+                            name: String,
                             address: String,
                             zipcode: String,
-                            coordinates: String,
-                            guardianName: String,
-                            guardianPhone: String,
+                            coordinates: String?,
+                            guardianName: String?,
+                            guardianPhone: String?,
                             completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
             .document(user.uid).updateData(["name": name]) { (error) in
-                                                if let error = error {
-                                                    completion(.failure(error))
-                                                } else {
-                                                    completion(.success(true))
-                                                }
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(true))
+                }
         }
-    }    
+    }
     
 }

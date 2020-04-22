@@ -21,7 +21,7 @@ class ConfigureUserViewController: UIViewController {
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
         guard let name = nameTextField.text, name.count > 1 else { return }
-        db.updateDatabaseUser(name: name, address: "", zipcode: "", coordinates: "", guardianName: "", guardianPhone: "") { [weak self] (result) in
+        db.updateDatabaseUser(displayName: nil, photoURL: nil, name: name, address: "", zipcode: "", coordinates: "", guardianName: nil, guardianPhone: nil) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
