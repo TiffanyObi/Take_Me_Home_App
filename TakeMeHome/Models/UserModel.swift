@@ -10,6 +10,7 @@ import Foundation
 
 struct UserModel {
     let userID:String
+    let email:String
     let username:String
     let userAddress: String
     let userZipcode: String
@@ -17,13 +18,13 @@ struct UserModel {
     let displayName:String
     let guardianName:String?
     let guardianPhone:String?
-   
     let guardianPhotoURL:String?
 }
 
 extension UserModel {
     init(_ dictionary: [String:Any]) {
         self.userID = dictionary["userID"] as? String ?? "no userID"
+        self.email = dictionary["email"] as? String ?? "no email"
         self.username = dictionary["username"] as? String ?? "no username"
         self.userAddress = dictionary["userAddress"] as? String ?? "no user Address"
         self.userZipcode = dictionary["userZipcode"] as? String ?? "no Zipcode"
