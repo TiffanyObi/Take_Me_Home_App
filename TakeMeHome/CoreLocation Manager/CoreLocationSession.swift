@@ -10,25 +10,17 @@
 import Foundation
 import CoreLocation
 
-//struct Location {
-//let title: String
-//let body: String
-//let coordinate: CLLocationCoordinate2D
-//let imageName: String
-//    
-//    public func getLocations() -> [Location] {
-//    
-//    return []
-//    }
-//}
+
 
 class CoreLocationSession: NSObject {
   
   public var locationManager: CLLocationManager
-  
+//    var user: UserModel!
+//    var user = UserModel(userID: user.userID, email: user.email, username: user.username, userAddress: user.userAddress, userZipcode: user.userZipcode, userPhotoURL: user.userPhotoURL, displayName: user.displayName, guardianName: user.guardianName, guardianPhone: user.guardianPhone, guardianPhotoURL: user.guardianPhotoURL)
     
   override init() {
     locationManager = CLLocationManager()
+//    user = UserModel(userID: user.userID, email: user.email, username: user.username, userAddress: user.userAddress, userZipcode: user.userZipcode, userPhotoURL: user.userPhotoURL, displayName: user.displayName, guardianName: user.guardianName, guardianPhone: user.guardianPhone, guardianPhotoURL: user.guardianPhotoURL)
     super.init()
     locationManager.delegate = self
     
@@ -42,31 +34,30 @@ class CoreLocationSession: NSObject {
      NSLocationWhenInUseUsageDescription
     */
     
-    // get updates for user location
     
+    // get updates for user location
     // more aggressive solution of GPS data collection
     //locationManager.startUpdatingLocation()
     
-    // less aggressive on battery consumption and GPS data collection
+   
     startSignificantLocationChanges()
-    
-    startMonitoringRegion()
+//    startMonitoringRegion()
   }
    
   
   private func startSignificantLocationChanges() {
     if !CLLocationManager.significantLocationChangeMonitoringAvailable() {
-      // not available on the device
+     
       return
     }
-    // less aggresive that the startUpdatingLocation() in GPS monitor chanages
+    
     locationManager.startMonitoringSignificantLocationChanges()
   }
   
-  public func convertCoordinateToPlacemark(coordinate: CLLocationCoordinate2D) {
-    // we will use the CLGeocoder() class for converting coordinate (CLLocationCoordinate2D) to placemark (CLPlacemark)
     
-    // we need to create CLLocation
+    
+  public func convertCoordinateToPlacemark(coordinate: CLLocationCoordinate2D) {
+    
     let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
     
     CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
@@ -79,6 +70,9 @@ class CoreLocationSession: NSObject {
     }
   }
   
+    
+    
+    
   public func convertPlaceNameToCoordinate(addressString: String) {
     // coverting an address to a coordinate
     CLGeocoder().geocodeAddressString(addressString) { (placemarks, error) in
@@ -92,24 +86,40 @@ class CoreLocationSession: NSObject {
     }
   }
   
-  // monitor a CLRegion
-  // a CLRegion is made up of a center coordinate and a radius in meters
-  private func startMonitoringRegion() {
-    let location = locationManager.location
-    let identifier = "monitoring region"
-
-    let region = CLCircularRegion(center: location?.coordinate ?? (CLLocationCoordinate2D(latitude: 40.7027, longitude: 73.7890)) , radius: 100, identifier: identifier)
-    //this is what we would change to adjust when monitoring atrts automatically
-    region.notifyOnEntry = true
-    //this as well
-    region.notifyOnExit = false
+  
+ 
     
-    locationManager.startMonitoring(for: region)
+       
+//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+//        if let region = region as? CLCircularRegion {
+//            let identifier = region.identifier
+//            triggerTaskAssociatedWithRegionIdentifier(regionID: identifier)
+//        }
+//    }
     
-  }
+   
+//}
+    
+//   public func getCoordinate( addressString : String,
+//            completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
+//        let geocoder = CLGeocoder()
+//        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+//            if error == nil {
+//                if let placemark = placemarks?[0] {
+//                    let location = placemark.location!
+//
+//                    completionHandler(location.coordinate, nil)
+//                    return
+//                }
+//            }
+//
+//            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+//        }
+//    }
 }
 
 extension CoreLocationSession: CLLocationManagerDelegate {
+    
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     print("didUpdateLocations: \(locations)")
     

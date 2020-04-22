@@ -28,6 +28,7 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserInfo()
+        authSession.signoutCurrentUser()
     }
     
     @IBAction func optionButtonPressed(_ sender: UIButton) {
@@ -35,8 +36,7 @@ class UserViewController: UIViewController {
             UIViewController.showViewController(storyboardName: "Pin", viewControllerID: "PinController")
         } else {
             authSession.signoutCurrentUser()
-            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
-            //UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
+            UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
         }
         
     }

@@ -95,6 +95,7 @@ class SettingsViewController: UIViewController {
    
     @IBAction func saveButtonPressed(_ sender: UIButton) {
            updateDatabaseWithUserContactInfo(with: displayName, photoURL: "", name: username, address: userAddress, zipcode: userZipcode, guardianName: guardianName, guardianPhone: guardianAddress)
+            UIViewController.showViewController(storyboardName: "UserView", viewControllerID: "UserViewController")
     }
     
     
