@@ -10,6 +10,8 @@ import Foundation
 
 struct UserModel {
     let userID:String
+    let pin:String
+    let hasGuaridan: String
     let email:String
     let username:String
     let userAddress: String
@@ -24,6 +26,8 @@ struct UserModel {
 extension UserModel {
     init(_ dictionary: [String:Any]) {
         self.userID = dictionary["userID"] as? String ?? "no userID"
+        self.pin = dictionary["pin"] as? String ?? "no pin"
+        self.hasGuaridan = dictionary["hasGuaridan"] as? String ?? "no hasGuaridan"
         self.email = dictionary["email"] as? String ?? "no email"
         self.username = dictionary["username"] as? String ?? "no username"
         self.userAddress = dictionary["userAddress"] as? String ?? "no user Address"

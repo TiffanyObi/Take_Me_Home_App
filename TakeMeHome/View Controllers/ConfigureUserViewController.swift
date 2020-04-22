@@ -12,18 +12,24 @@ class ConfigureUserViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var pinTextField: UITextField!
+    @IBOutlet weak var pinLabel: UILabel!
     
     private let db = DatabaseService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !db.hasGardian {
+            pinTextField.isHidden = true
+            pinLabel.isHidden = true
+        }
         nameTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
         pinTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
     }
     
     @objc func enterPressed() {
         nameTextField.resignFirstResponder()
-        //pibTextField.resignFirstResponder()
+        pinTextField.resignFirstResponder()
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
@@ -36,7 +42,7 @@ class ConfigureUserViewController: UIViewController {
                     self?.showAlert(title: "Please enter a valid user name", message: error.localizedDescription)
                 }
             case .success:
-                UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "UserViewController")
+                UIViewController.showViewController(storyboardName: "UserView", viewControllerID: "UserViewController")
             }
         }
     }

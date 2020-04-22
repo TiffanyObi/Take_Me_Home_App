@@ -142,7 +142,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="J5Y-ce-dGo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -154,12 +154,24 @@
                                     <action selector="confirmButtonPressed:" destination="Kf1-jp-wn4" eventType="touchUpInside" id="3BO-7x-9Kc"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW1-hF-554">
+                                <rect key="frame" x="20" y="64" width="70" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="OeC-Fi-TON"/>
+                                    <constraint firstAttribute="height" constant="44" id="kSR-kP-LpU"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Kf1-jp-wn4" eventType="touchUpInside" id="tWn-0Z-ekq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3rN-yO-2QU" firstAttribute="centerY" secondItem="XNI-zX-ioN" secondAttribute="centerY" id="0Di-Hk-QtF"/>
                             <constraint firstItem="ROI-ME-Ig9" firstAttribute="top" secondItem="RHQ-3j-1kL" secondAttribute="bottom" constant="35" id="1KB-su-i1v"/>
                             <constraint firstItem="RHQ-3j-1kL" firstAttribute="top" secondItem="1kx-uP-qm8" secondAttribute="bottom" constant="35" id="2HE-dw-1mz"/>
+                            <constraint firstItem="fW1-hF-554" firstAttribute="leading" secondItem="U8e-ZH-1dN" secondAttribute="leading" constant="20" id="75L-wI-Kt9"/>
                             <constraint firstItem="1kx-uP-qm8" firstAttribute="leading" secondItem="U8e-ZH-1dN" secondAttribute="leading" constant="50" id="9Pa-yj-wuO"/>
                             <constraint firstItem="1Uq-Q8-DDR" firstAttribute="centerX" secondItem="7dq-He-ngN" secondAttribute="centerX" id="DP6-rc-5IW"/>
                             <constraint firstItem="3rN-yO-2QU" firstAttribute="centerX" secondItem="xTN-Cl-6IC" secondAttribute="centerX" id="EUc-Dw-Mo7"/>
@@ -174,6 +186,7 @@
                             <constraint firstItem="U8e-ZH-1dN" firstAttribute="trailing" secondItem="YyV-8o-Vta" secondAttribute="trailing" constant="50" id="VGu-cI-b8R"/>
                             <constraint firstItem="U8e-ZH-1dN" firstAttribute="trailing" secondItem="1kx-uP-qm8" secondAttribute="trailing" constant="50" id="WD1-X9-mW5"/>
                             <constraint firstItem="Bje-YK-xnm" firstAttribute="centerX" secondItem="7dq-He-ngN" secondAttribute="centerX" id="Wd5-NO-w8T"/>
+                            <constraint firstItem="fW1-hF-554" firstAttribute="top" secondItem="U8e-ZH-1dN" secondAttribute="top" constant="20" id="bTw-Uy-Jk3"/>
                             <constraint firstItem="XNI-zX-ioN" firstAttribute="leading" secondItem="U8e-ZH-1dN" secondAttribute="leading" constant="50" id="gnF-RN-qCW"/>
                             <constraint firstItem="jsB-cn-5dA" firstAttribute="centerY" secondItem="xTN-Cl-6IC" secondAttribute="centerY" id="h5P-0p-T7J"/>
                             <constraint firstItem="YyV-8o-Vta" firstAttribute="centerY" secondItem="1Uq-Q8-DDR" secondAttribute="centerY" id="hK3-4Y-VVV"/>

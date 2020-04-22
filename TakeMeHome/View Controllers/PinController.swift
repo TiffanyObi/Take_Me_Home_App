@@ -9,49 +9,63 @@
 import UIKit
 
 class PinController: UIViewController {
+    
     @IBOutlet weak var pinLable: UILabel!
     
+    private let db = DatabaseService.shared
+    private var authSession = AuthenticationService()
     private var enteredNumber = ""
+    private var hiddenPin = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        pinLable.text = ""
         // Do any additional setup after loading the view.
     }
 
     @IBAction func numberButtonPressed(_ sender: UIButton) {
         guard let number = sender.titleLabel?.text else { return }
-        
+        print(number)
         switch number {
         case "1":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "2":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "3":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "4":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "5":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "6":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "7":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "8":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "9":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         case "0":
-            pinLable.text = pinLable.text ?? "*" + "*"
+            hiddenPin += "*"
+            pinLable.text = hiddenPin
             enteredNumber += number
         default:
             fatalError("could unwrap the numbers")
@@ -59,6 +73,14 @@ class PinController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
+        if db.pin == enteredNumber {
+            print("it works")
+        }
+        UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
+    }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        UIViewController.showViewController(storyboardName: "UserView", viewControllerID: "UserViewController")
     }
     
 }

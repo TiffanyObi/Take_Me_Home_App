@@ -9,22 +9,50 @@
 import UIKit
 
 class UserViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    private var db = DatabaseService.shared
+    private var authSession = AuthenticationService()
+    
+    private var userInfo: UserModel! {
+        didSet {
+            print(userInfo.username)
+            print(userInfo.email)
+            db.pin = userInfo.pin
+            
+            if userInfo.hasGuaridan == "True" {
+                db.hasGardian = true
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchUserInfo()
     }
-    */
-
+    
+    @IBAction func optionButtonPressed(_ sender: UIButton) {
+        if db.hasGardian {
+            UIViewController.showViewController(storyboardName: "Pin", viewControllerID: "PinController")
+        } else {
+            authSession.signoutCurrentUser()
+            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
+            //UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
+        }
+        
+    }
+    
+    private func fetchUserInfo() {
+        db.fetchUserInfo { (result) in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let userData):
+                DispatchQueue.main.async {
+                    self.userInfo = userData
+                }
+            }
+        }
+    }
+    
+    
 }
