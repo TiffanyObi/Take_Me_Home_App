@@ -44,7 +44,7 @@ class DatabaseService {
                             guardianPhone: String?,
                             completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let user = Auth.auth().currentUser else { return }
-        db.collection(DatabaseService.usersCollection)
+db.collection(DatabaseService.usersCollection)
             .document(user.uid).updateData([
                 "userID": user.uid,
                 "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": name, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
