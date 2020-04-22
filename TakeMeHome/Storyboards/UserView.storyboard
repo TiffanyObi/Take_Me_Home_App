@@ -22,11 +22,34 @@
                                     <action selector="optionButtonPressed:" destination="V72-vh-E4t" eventType="touchUpInside" id="s6n-Gr-lsS"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="Y91-BB-ykF">
+                                <rect key="frame" x="20" y="238.5" width="374" height="419"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQ1-SH-hBk">
+                                        <rect key="frame" x="0.0" y="-0.5" width="374" height="199.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="qiu-Qs-kzg"/>
+                                        </constraints>
+                                        <state key="normal" title="Take Me Home" backgroundImage="house" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7j-of-nOF">
+                                        <rect key="frame" x="0.0" y="221" width="374" height="192"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="GcZ-oQ-qEt"/>
+                                        </constraints>
+                                        <state key="normal" title="Need Help" backgroundImage="light.max" catalog="system"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="FxG-E0-a0z" firstAttribute="top" secondItem="M6e-kY-Dfk" secondAttribute="top" constant="18" id="4Wu-vZ-jei"/>
+                            <constraint firstItem="Y91-BB-ykF" firstAttribute="leading" secondItem="M6e-kY-Dfk" secondAttribute="leading" constant="20" id="B4A-0G-Kn1"/>
                             <constraint firstItem="M6e-kY-Dfk" firstAttribute="trailing" secondItem="FxG-E0-a0z" secondAttribute="trailing" constant="42" id="HfK-7l-WDv"/>
+                            <constraint firstItem="Y91-BB-ykF" firstAttribute="centerX" secondItem="75v-I2-z4C" secondAttribute="centerX" id="yDQ-1Q-kne"/>
+                            <constraint firstItem="M6e-kY-Dfk" firstAttribute="trailing" secondItem="Y91-BB-ykF" secondAttribute="trailing" constant="20" id="zKO-o6-Lef"/>
+                            <constraint firstItem="Y91-BB-ykF" firstAttribute="centerY" secondItem="75v-I2-z4C" secondAttribute="centerY" id="zXq-Cu-zn5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M6e-kY-Dfk"/>
                     </view>
@@ -36,4 +59,8 @@
             <point key="canvasLocation" x="-281" y="106"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="light.max" catalog="system" width="128" height="71"/>
+    </resources>
 </document>
