@@ -11,12 +11,19 @@ import UIKit
 class ConfigureUserViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
+    //@IBOutlet weak var pinTextField: UITextField!
     
     private let db = DatabaseService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        nameTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        //pinTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+    }
+    
+    @objc func enterPressed() {
+        nameTextField.resignFirstResponder()
+        //pibTextField.resignFirstResponder()
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
