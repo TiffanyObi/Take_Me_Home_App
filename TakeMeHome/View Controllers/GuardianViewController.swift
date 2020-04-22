@@ -17,47 +17,98 @@ class GuardianViewController: UIViewController {
     //can possibly add the username/ personname to button text with this
     @IBOutlet weak var userCurreLocationUpdateText: UIButton!
     
+    var user: UserModel! {
+        didSet{
+            print(user.username)
+            
+            homeAddress = "\(user.userAddress), \(user.userZipcode)"
+            
+           homeCoordinates = convertPlaceNameToCoordinate(addressString: ("\(user.userAddress), \(user.userZipcode)"))
+            
+        }
+    }
+    
+    var homeAddress = "104-15 125th street, 11419"
+    var homeCoordinates =
+    
      private let locationSession = CoreLocationSession()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       // testing converting coordinate to placemark
-//        convertCoordinateToPlacemark()
+//        testing converting coordinate to placemark
+        convertCoordinateToPlacemark()
         
-        // testing converting place name to coordinate
-//        convertPlaceNameToCoordinate()
+//         testing converting place name to coordinate
+        convertPlaceNameToCoordinate()
         
         // configure map view
         // attempt to show the user's current location
         mapView.showsUserLocation = true
         mapView.delegate = self
         
-//        loadMapView()
+        loadMapView()
     }
   
-//    private func makeAnnotations() -> [MKPointAnnotation] {
-//     var annotations = [MKPointAnnotation]()
-//     for location in Location.getLocations() {
-//       let annotation = MKPointAnnotation()
-//       annotation.coordinate = location.coordinate
-//       annotation.title = location.title
-//       annotations.append(annotation)
-//     }
-//     return annotations
-//   }
+    private func makeAnnotations() -> [MKPointAnnotation]{
+        var annotations = [MKPointAnnotation]()
+            let annotation = MKPointAnnotation()
+            
+        annotation.title = "\()"
+            annotation.coordinate = CLLocationCoordinate2D(latitude: 40.6430471, longitude: -73.9359625)
+            annotations.append(annotation)
+        return annotations
+    }
     
     
-//    private func loadMapView() {
-//     let annotations = makeAnnotations()
-//     mapView.showAnnotations(annotations, animated: true)
-//   }
+    private func loadMapView() {
+     let annotations = makeAnnotations()
+     mapView.showAnnotations(annotations, animated: true)
+   }
     
     
-//    private func convertCoordinateToPlacemark() {
-//      let location = Location.getLocations()[2]
-//      locationSession.convertCoordinateToPlacemark(coordinate: location.coordinate)
-//    }
+    private func convertCoordinateToPlacemark() {
+     
+        
+      locationSession.convertCoordinateToPlacemark(coordinate: homeCoordinates)
+    }
+    
+    private func startMonitoringRegion() {
+//      var homeCoordinates = convertPlaceNameToCoordinate(addressString: ("\(user.userAddress), \(user.userZipcode)"))
+       
+       let location = locationManager.location //users location, need to be home address
+       let identifier = "monitoring region"
+
+       let region = CLCircularRegion(center: location?.coordinate ?? (CLLocationCoordinate2D(latitude: 40.7027, longitude: 73.7890)) , radius: 30, identifier: identifier)
+       //this is what we would change to adjust when monitoring atrts automatically
+       region.notifyOnEntry = true
+       //this as well
+       region.notifyOnExit = false
+       
+       locationManager.startMonitoring(for: region)
+       
+     }
+    
+    public func getDirections() {
+       //user current position
+        let coordinate = locationSession.location.coordinate
+        
+            let request = MKDirections.Request()
+        
+            request.source = MKMapItem.forCurrentLocation()
+        //would be user home
+           request.destination = MKMapItem(placemark: MKPlacemark(coordinate: coordinate ?? (CLLocationCoordinate2D(latitude: 40.7027, longitude: 73.7890)))
+            request.transportType = .any
+            let directions = MKDirections(request: request)
+            directions.calculate { //[unowned self]
+                (response, error) in
+                guard let unwrappedResponse = response else { return }
+                for route in unwrappedResponse.routes {
+                    self.faveDatailViews.venueMap.addOverlay(route.polyline)
+                    self.faveDatailViews.venueMap.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+        }
+    }
 
 
     @IBAction func currentUserLocationPressed(_ sender: UIButton) {
