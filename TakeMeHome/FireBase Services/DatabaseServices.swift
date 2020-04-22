@@ -30,8 +30,7 @@ class DatabaseService {
             .setData(["email" : email,
                       "createdDate": Timestamp(date: Date()),
                       "userId": authDataResult.user.uid,
-                      "hasGuaridan":hasGuardian,
-                      "pin": pin]) { (error) in
+                      "hasGuaridan":hasGuardian]) { (error) in
                         
                         if let error = error {
                             completion(.failure(error))
@@ -55,6 +54,7 @@ class DatabaseService {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
             .document(user.uid).updateData([
+                "pin": pin,
                 "userID": user.uid,
                 "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": username, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
                     if let error = error {
