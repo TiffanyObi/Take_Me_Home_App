@@ -23,9 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         if let _ = Auth.auth().currentUser { // a user is currently logged in
-            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "AppStateViewController")
+            UIViewController.showViewController(storyboardName: "UserViewController", viewControllerID: "UserView")
         } else { // no logged in user
-            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
+            UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
         }
         
         window?.makeKeyAndVisible()
