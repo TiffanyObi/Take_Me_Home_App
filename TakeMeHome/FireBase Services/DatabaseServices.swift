@@ -19,7 +19,8 @@ class DatabaseService {
     public var email = ""
     public var password = ""
     
-    public func createDatabaseUser(hasGuardian: String, authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
+    
+    public func createDatabaseUser(hasGuardian: String,authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let email = authDataResult.user.email else {
             return
         }
@@ -49,12 +50,14 @@ class DatabaseService {
                             completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
-            .document(user.uid).updateData(["name": name]) { (error) in
-                if let error = error {
-                    completion(.failure(error))
-                } else {
-                    completion(.success(true))
-                }
+            .document(user.uid).updateData([
+                "userID": user.uid,
+                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": name, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(true))
+                    }
         }
     }
     
