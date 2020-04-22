@@ -16,7 +16,7 @@ class DatabaseService {
     
     private let db = Firestore.firestore()
     
-    public func createDatabaseUser(authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
+    public func createDatabaseUser(hasGuardian: String,authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let email = authDataResult.user.email else {
             return
         }
@@ -24,7 +24,7 @@ class DatabaseService {
             .document(authDataResult.user.uid)
             .setData(["email" : email,
                       "createdDate": Timestamp(date: Date()),
-                      "userId": authDataResult.user.uid]) { (error) in
+                      "userId": authDataResult.user.uid, "hasGuaridan":hasGuardian]) { (error) in
                         
                         if let error = error {
                             completion(.failure(error))
@@ -34,19 +34,20 @@ class DatabaseService {
         }
     }
     
-    func updateDatabaseUser(displayName: String,
-                            photoURL: String,
+    func updateDatabaseUser(displayName: String?,
+                            photoURL: String?,
                             name: String,
                             address: String,
                             zipcode: String,
-                            coordinates: String,
-                            guardianName: String,
-                            guardianPhone: String,
+                            coordinates: String?,
+                            guardianName: String?,
+                            guardianPhone: String?,
                             completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let user = Auth.auth().currentUser else { return }
-        db.collection(DatabaseService.usersCollection)
-            .document(user.uid).updateData(["photoURL" : photoURL,
-                                            "displayName" : displayName]) { (error) in
+db.collection(DatabaseService.usersCollection)
+            .document(user.uid).updateData([
+                "userID": user.uid,
+                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": name, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
                                                 if let error = error {
                                                     completion(.failure(error))
                                                 } else {
