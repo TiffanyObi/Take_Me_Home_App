@@ -61,4 +61,17 @@ class DatabaseService {
         }
     }
     
+    func fetchUserInfo(completion: @escaping (Result<UserModel, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        db.collection(DatabaseService.usersCollection).document(user.uid).getDocument { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else if let snapshot = snapshot?.data() {
+                let userInfo = UserModel(snapshot)
+                completion(.success(userInfo))
+            }
+        }
+    }
+    
 }
