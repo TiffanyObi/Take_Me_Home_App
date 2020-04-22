@@ -17,7 +17,6 @@ struct UserModel {
     let displayName:String
     let guardianName:String?
     let guardianPhone:String?
-   
     let guardianPhotoURL:String?
 }
 
