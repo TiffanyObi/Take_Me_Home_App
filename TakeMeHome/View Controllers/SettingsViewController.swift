@@ -100,7 +100,7 @@ class SettingsViewController: UIViewController {
     
     
     private func updateDatabaseWithUserContactInfo(with displayName: String, photoURL:String, name:String, address:String, zipcode:String,guardianName:String,guardianPhone:String){
-        database.updateDatabaseUser(displayName: displayName, photoURL: photoURL, name: name, address: address, zipcode: zipcode, coordinates: nil, guardianName: guardianName, guardianPhone: guardianPhone) { [weak self] (result) in
+        database.updateDatabaseUser(displayName: displayName, photoURL: photoURL, username: name, address: address, zipcode: zipcode, coordinates: nil, guardianName: guardianName, guardianPhone: guardianPhone) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Saving Contact Info: Error - \(error)", message: "Please try again later")

@@ -18,6 +18,7 @@ class DatabaseService {
     public var hasGardian = false
     public var email = ""
     public var password = ""
+    public var pin = ""
     
     
     public func createDatabaseUser(hasGuardian: String,authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
@@ -39,9 +40,23 @@ class DatabaseService {
         }
     }
     
+    func updateDatabaseUserConfirmationInfo(pin: String,
+                                            username: String,
+                                            completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else { return }
+        db.collection(DatabaseService.usersCollection).document(user.uid).updateData(["pin": pin, "username": username]) { (error) in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(true))
+                    }
+        }
+    }
+    
+
     func updateDatabaseUser(displayName: String?,
                             photoURL: String?,
-                            name: String,
+                            username: String,
                             address: String,
                             zipcode: String,
                             coordinates: String?,
@@ -52,7 +67,7 @@ class DatabaseService {
         db.collection(DatabaseService.usersCollection)
             .document(user.uid).updateData([
                 "userID": user.uid,
-                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": name, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
+                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": username, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
                     if let error = error {
                         completion(.failure(error))
                     } else {
