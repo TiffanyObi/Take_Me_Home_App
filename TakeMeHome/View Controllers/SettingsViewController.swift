@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       configureTextfields()
     }
     
     private func configureTextfields(){
@@ -64,6 +64,8 @@ class SettingsViewController: UIViewController {
     
 
     @IBAction func activeGuardianSwitchToggled(_ sender: UISwitch) {
+        
+       
     }
     
     private func updateDatabaseWithUserContactInfo(with displayName: String, photoURL:String, name:String, address:String, zipcode:String,guardianName:String,guardianPhone:String){
@@ -86,7 +88,7 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let displaynameText = displayNameTextfield.text,
             !displaynameText.isEmpty,
             let usernameText = usernameTexfield.text,
@@ -99,16 +101,24 @@ extension SettingsViewController: UITextFieldDelegate {
             !userPhonenumberText.isEmpty,
             let guardianNameText = guardianNameTexfield.text,
             let guardianAddressText = guardianAddressTextfield.text,
-            let guardianPhonenumberText = guardianPhoneNumberTextfield.text else { return false }
-        
-        
-        
-        
-        
-        
-        
-        
-        return true
+            let guardianPhonenumberText = guardianPhoneNumberTextfield.text else { return  }
+        displayName = displaynameText
+        print(displayName)
+        username = usernameText
+         print(username)
+        userAddress = userAddressText
+         print(userAddress)
+        userZipcode = userZipcodeText
+         print(userZipcode)
+        userPhonenumber = userPhonenumberText
+         print(userPhonenumber)
+        guardianName = guardianNameText
+         print(guardianName)
+        guardianAddress = guardianAddressText
+         print(guardianAddress)
+        guardianPhonenumber = guardianPhonenumberText
+         print(guardianPhonenumber)
+    
     }
     
 }

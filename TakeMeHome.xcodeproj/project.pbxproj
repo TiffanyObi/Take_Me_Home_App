@@ -15,7 +15,7 @@
 		3E3EDC39244E074800EF2A6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EDC37244E074800EF2A6E /* LaunchScreen.storyboard */; };
 		3E3EDC41244E08D300EF2A6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EDC40244E08D300EF2A6E /* GoogleService-Info.plist */; };
 		3E3EDC4B244E0F8000EF2A6E /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC4A244E0F8000EF2A6E /* SelectionViewController.swift */; };
-		3E3EDC4D244E0F9300EF2A6E /* AppStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC4C244E0F9300EF2A6E /* AppStateViewController.swift */; };
+		3E3EDC4D244E0F9300EF2A6E /* ConfigureUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC4C244E0F9300EF2A6E /* ConfigureUserViewController.swift */; };
 		3E3EDC4F244E0FE900EF2A6E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC4E244E0FE900EF2A6E /* SettingsViewController.swift */; };
 		3E3EDC51244E110600EF2A6E /* GuardianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC50244E110600EF2A6E /* GuardianViewController.swift */; };
 		3E3EDC53244E113500EF2A6E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC52244E113500EF2A6E /* UserViewController.swift */; };
@@ -47,7 +47,7 @@
 		3E3EDC3A244E074800EF2A6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E3EDC40244E08D300EF2A6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E3EDC4A244E0F8000EF2A6E /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
-		3E3EDC4C244E0F9300EF2A6E /* AppStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateViewController.swift; sourceTree = "<group>"; };
+		3E3EDC4C244E0F9300EF2A6E /* ConfigureUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureUserViewController.swift; sourceTree = "<group>"; };
 		3E3EDC4E244E0FE900EF2A6E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3E3EDC50244E110600EF2A6E /* GuardianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardianViewController.swift; sourceTree = "<group>"; };
 		3E3EDC52244E113500EF2A6E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 				3E3EDC30244E074100EF2A6E /* LoginViewController.swift */,
 				3E3EDC4E244E0FE900EF2A6E /* SettingsViewController.swift */,
 				3E3EDC4A244E0F8000EF2A6E /* SelectionViewController.swift */,
-				3E3EDC4C244E0F9300EF2A6E /* AppStateViewController.swift */,
+				3E3EDC4C244E0F9300EF2A6E /* ConfigureUserViewController.swift */,
 				3E3EDC50244E110600EF2A6E /* GuardianViewController.swift */,
 				3E3EDC52244E113500EF2A6E /* UserViewController.swift */,
 			);
@@ -175,8 +175,8 @@
 		3E3EDC47244E0E6600EF2A6E /* FireBase Services */ = {
 			isa = PBXGroup;
 			children = (
-				3E3EDC5C244E13F400EF2A6E /* DatabaseServices.swift */,
 				3E3EDC5E244E140900EF2A6E /* AuthenticationService.swift */,
+				3E3EDC5C244E13F400EF2A6E /* DatabaseServices.swift */,
 			);
 			path = "FireBase Services";
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E3EDC4D244E0F9300EF2A6E /* AppStateViewController.swift in Sources */,
+				3E3EDC4D244E0F9300EF2A6E /* ConfigureUserViewController.swift in Sources */,
 				3E3EDC6B244E15BD00EF2A6E /* CoreLocationSession.swift in Sources */,
 				3E3EDC53244E113500EF2A6E /* UserViewController.swift in Sources */,
 				3E3EDC31244E074100EF2A6E /* LoginViewController.swift in Sources */,
