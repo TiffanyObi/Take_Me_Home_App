@@ -18,6 +18,7 @@ class DatabaseService {
     public var hasGardian = false
     public var email = ""
     public var password = ""
+    public var pin = ""
     
     
     public func createDatabaseUser(hasGuardian: String,authDataResult: AuthDataResult, completion: @escaping (Result<Bool, Error>) -> ()) {
@@ -39,9 +40,11 @@ class DatabaseService {
         }
     }
     
-    func updateDatabaseUser(displayName: String?,
+
+    func updateDatabaseUser(pin: String,
+                            displayName: String?,
                             photoURL: String?,
-                            name: String,
+                            username: String,
                             address: String,
                             zipcode: String,
                             coordinates: String?,
@@ -51,8 +54,9 @@ class DatabaseService {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
             .document(user.uid).updateData([
+                "pin": pin,
                 "userID": user.uid,
-                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": name, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
+                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": username, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
                     if let error = error {
                         completion(.failure(error))
                     } else {
@@ -73,5 +77,4 @@ class DatabaseService {
             }
         }
     }
-    
 }
