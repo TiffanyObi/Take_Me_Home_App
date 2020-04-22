@@ -40,9 +40,21 @@ class DatabaseService {
         }
     }
     
+    func updateDatabaseUserConfirmationInfo(pin: String,
+                                            username: String,
+                                            completion: @escaping (Result<Bool, Error>) -> ()) {
+        guard let user = Auth.auth().currentUser else { return }
+        db.collection(DatabaseService.usersCollection).document(user.uid).updateData(["pin": pin, "username": username]) { (error) in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(true))
+                    }
+        }
+    }
+    
 
-    func updateDatabaseUser(pin: String,
-                            displayName: String?,
+    func updateDatabaseUser(displayName: String?,
                             photoURL: String?,
                             username: String,
                             address: String,
@@ -54,7 +66,6 @@ class DatabaseService {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
             .document(user.uid).updateData([
-                "pin": pin,
                 "userID": user.uid,
                 "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": username, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
                     if let error = error {

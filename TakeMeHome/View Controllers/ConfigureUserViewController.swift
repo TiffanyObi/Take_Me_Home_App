@@ -11,14 +11,14 @@ import UIKit
 class ConfigureUserViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
-    //@IBOutlet weak var pinTextField: UITextField!
+    @IBOutlet weak var pinTextField: UITextField!
     
     private let db = DatabaseService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
-        //pinTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        pinTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
     }
     
     @objc func enterPressed() {
@@ -28,7 +28,8 @@ class ConfigureUserViewController: UIViewController {
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
         guard let name = nameTextField.text, name.count > 1 else { return }
-        db.updateDatabaseUser(displayName: nil, photoURL: nil, name: name, address: "", zipcode: "", coordinates: "", guardianName: nil, guardianPhone: nil) { [weak self] (result) in
+        let pin = pinTextField.text ?? ""
+        db.updateDatabaseUserConfirmationInfo(pin: pin, username: name) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 DispatchQueue.main.async {
