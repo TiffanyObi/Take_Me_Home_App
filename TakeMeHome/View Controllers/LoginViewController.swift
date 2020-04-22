@@ -21,7 +21,13 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        emailTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        passwordTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+    }
+    
+    @objc func enterPressed() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {

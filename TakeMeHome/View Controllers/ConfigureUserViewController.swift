@@ -22,7 +22,15 @@ class ConfigureUserViewController: UIViewController {
             pinTextField.isHidden = true
             pinLabel.isHidden = true
         }
+        
+        nameTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        pinTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
 
+    }
+    
+    @objc func enterPressed() {
+        nameTextField.resignFirstResponder()
+        pinTextField.resignFirstResponder()
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
