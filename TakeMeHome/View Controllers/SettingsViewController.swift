@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
 
@@ -37,6 +38,8 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var signOutButton: UIButton!
+    
     @IBOutlet weak var bottomContraint: NSLayoutConstraint!
     
     var constraint: CGFloat = 0
@@ -51,6 +54,7 @@ class SettingsViewController: UIViewController {
 //     var constraint: NSLayoutConstraint!
     
     private var database = DatabaseService()
+    private var db = DatabaseService.shared
     private var displayName = ""
     private var username = ""
     private var userAddress = ""
@@ -61,12 +65,21 @@ class SettingsViewController: UIViewController {
     private var guardianPhonenumber = ""
     private var guardianZipcode = ""
     
+    private var userInfo: UserModel? {
+        didSet {
+            updateSettingsWithDatabaseUserInfo()
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        fetchUserInfo()
         configureTextfields()
+        configureGuardianUI()
         registerForKeyboardNotifications()
         view.addGestureRecognizer(tapGesture)
+//        updateSettingsWithDatabaseUserInfo()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -86,15 +99,72 @@ class SettingsViewController: UIViewController {
         guardianPhoneNumberTextfield.delegate = self
     }
     
-
+    func configureGuardianUI(){
+        if db.hasGardian {
+            activeGuardianSwitch.isOn = true
+            guardianNameTexfield.isEnabled = true
+            guardianAddressTextfield.isEnabled = true
+            guardianZipcodeTextfield.isEnabled = true
+            guardianPhoneNumberTextfield.isEnabled = true
+        } else if !db.hasGardian {
+            activeGuardianSwitch.isOn = false
+            guardianNameTexfield.isEnabled = false
+            guardianAddressTextfield.isEnabled = false
+            guardianZipcodeTextfield.isEnabled = false
+            guardianPhoneNumberTextfield.isEnabled = false
+        }
+    }
+    private func fetchUserInfo() {
+        db.fetchUserInfo { (result) in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let userData):
+                DispatchQueue.main.async {
+                    self.userInfo = userData
+                }
+            }
+        }
+    }
+    
+    func updateSettingsWithDatabaseUserInfo(){
+        displayNameTextfield.text = userInfo?.displayName
+        usernameTexfield.text = userInfo?.username
+        userAddressTextfield.text = userInfo?.userAddress
+        userZipcodeTextfield.text = userInfo?.userZipcode
+        userPhoneNumberTextfield.text = userPhonenumber
+        guardianNameTexfield.text = userInfo?.guardianName ?? ""
+        guardianAddressTextfield.text = guardianAddress
+        guardianPhoneNumberTextfield.text = userInfo?.guardianPhone ?? ""
+        guardianZipcodeTextfield.text = guardianZipcode
+    }
+    
     @IBAction func activeGuardianSwitchToggled(_ sender: UISwitch) {
-        
+        if db.hasGardian {
+            
+            sender.setOn(false, animated: true)
+            db.hasGardian = false
+            
+            print("has guardian was true and is now \(db.hasGardian.description)")
+        } else if !db.hasGardian {
+            sender.setOn(true, animated: true)
+            db.hasGardian = true
+              print("has guardian was false and is now \(db.hasGardian.description)")
+        }
        
+    }
+    
+    
+    @IBAction func signOutButtonPressed(_ sender: UIButton) {
+        AuthenticationService().signoutCurrentUser()
+        
     }
     
    
     @IBAction func saveButtonPressed(_ sender: UIButton) {
            updateDatabaseWithUserContactInfo(with: displayName, photoURL: "", name: username, address: userAddress, zipcode: userZipcode, guardianName: guardianName, guardianPhone: guardianAddress)
+        
+        UIViewController.showViewController(storyboardName: "UserView", viewControllerID: "UserViewController")
     }
     
     
