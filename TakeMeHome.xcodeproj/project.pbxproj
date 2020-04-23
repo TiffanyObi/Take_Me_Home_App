@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E77EAA3244F05CA009A0DA9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E77EAA1244F05CA009A0DA9 /* Model.xcdatamodeld */; };
+		2EF42F5424510CE8006ECCFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF42F5324510CE8006ECCFA /* MapViewController.swift */; };
+		2EF42F5624510D51006ECCFA /* NeedHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF42F5524510D51006ECCFA /* NeedHelpViewController.swift */; };
 		3E3EDC2D244E074100EF2A6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC2C244E074100EF2A6E /* AppDelegate.swift */; };
 		3E3EDC2F244E074100EF2A6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC2E244E074100EF2A6E /* SceneDelegate.swift */; };
 		3E3EDC31244E074100EF2A6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC30244E074100EF2A6E /* LoginViewController.swift */; };
@@ -40,6 +42,8 @@
 		016BB1104841CBF07BA0DE05 /* Pods_TakeMeHome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TakeMeHome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CCF52EFE2EB4776B1473304 /* Pods-TakeMeHome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.release.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.release.xcconfig"; sourceTree = "<group>"; };
 		2E77EAA2244F05CA009A0DA9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		2EF42F5324510CE8006ECCFA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2EF42F5524510D51006ECCFA /* NeedHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedHelpViewController.swift; sourceTree = "<group>"; };
 		3E3EDC29244E074100EF2A6E /* TakeMeHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E3EDC2C244E074100EF2A6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E3EDC2E244E074100EF2A6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				3E3EDC4C244E0F9300EF2A6E /* ConfigureUserViewController.swift */,
 				3E3EDC50244E110600EF2A6E /* GuardianViewController.swift */,
 				3E3EDC52244E113500EF2A6E /* UserViewController.swift */,
+				2EF42F5324510CE8006ECCFA /* MapViewController.swift */,
+				2EF42F5524510D51006ECCFA /* NeedHelpViewController.swift */,
 				3E3EDC6E2450929D00EF2A6E /* PinController.swift */,
 			);
 			path = "View Controllers";
@@ -338,10 +344,12 @@
 				3E3EDC4D244E0F9300EF2A6E /* ConfigureUserViewController.swift in Sources */,
 				3E3EDC6B244E15BD00EF2A6E /* CoreLocationSession.swift in Sources */,
 				3E3EDC53244E113500EF2A6E /* UserViewController.swift in Sources */,
+				2EF42F5624510D51006ECCFA /* NeedHelpViewController.swift in Sources */,
 				3E3EDC6F2450929D00EF2A6E /* PinController.swift in Sources */,
 				3E3EDC31244E074100EF2A6E /* LoginViewController.swift in Sources */,
 				3E3EDC4B244E0F8000EF2A6E /* SelectionViewController.swift in Sources */,
 				3E3EDC2D244E074100EF2A6E /* AppDelegate.swift in Sources */,
+				2EF42F5424510CE8006ECCFA /* MapViewController.swift in Sources */,
 				3E3EDC2F244E074100EF2A6E /* SceneDelegate.swift in Sources */,
 				3E3EDC4F244E0FE900EF2A6E /* SettingsViewController.swift in Sources */,
 				2E77EAA3244F05CA009A0DA9 /* Model.xcdatamodeld in Sources */,

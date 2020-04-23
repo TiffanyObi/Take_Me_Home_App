@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="Sga-dV-ChF">
             <objects>
-                <viewController id="h7C-cF-yfX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="h7C-cF-yfX" customClass="MapViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Lu-a6-vck">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,6 +23,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="fTH-iv-SP6"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="JOJ-of-t4c" id="ddS-N0-OoI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="386-Ad-5Id" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,6 +51,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Xqy-Pa-1qh"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
                                 <state key="normal" title="Take Me Home" backgroundImage="house" catalog="system"/>
                                 <connections>
                                     <segue destination="h7C-cF-yfX" kind="presentation" id="TAE-vh-BhQ"/>
@@ -58,21 +62,36 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="zkw-bI-4SZ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
                                 <state key="normal" title="Need Help" backgroundImage="light.max" catalog="system"/>
                                 <connections>
                                     <segue destination="mct-7T-iTS" kind="presentation" id="HWM-90-Ep4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fz-Kn-Dej">
+                                <rect key="frame" x="20" y="832" width="117" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Get Location"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQf-Uu-TMT">
+                                <rect key="frame" x="272" y="816" width="122" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Guardian Info"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="M6e-kY-Dfk" firstAttribute="bottom" secondItem="SQf-Uu-TMT" secondAttribute="bottom" constant="8" id="2C2-5l-HGo"/>
                             <constraint firstItem="FxG-E0-a0z" firstAttribute="top" secondItem="M6e-kY-Dfk" secondAttribute="top" constant="18" id="4Wu-vZ-jei"/>
                             <constraint firstItem="M6e-kY-Dfk" firstAttribute="trailing" secondItem="IBE-uQ-dRg" secondAttribute="trailing" constant="20" id="7fW-bh-LIh"/>
                             <constraint firstItem="M6e-kY-Dfk" firstAttribute="trailing" secondItem="FxG-E0-a0z" secondAttribute="trailing" constant="42" id="HfK-7l-WDv"/>
                             <constraint firstItem="Qtc-ln-AcH" firstAttribute="leading" secondItem="M6e-kY-Dfk" secondAttribute="leading" constant="20" id="LYY-pw-s5o"/>
                             <constraint firstItem="IBE-uQ-dRg" firstAttribute="leading" secondItem="M6e-kY-Dfk" secondAttribute="leading" constant="20" id="TXe-J9-cyH"/>
+                            <constraint firstItem="M6e-kY-Dfk" firstAttribute="trailing" secondItem="SQf-Uu-TMT" secondAttribute="trailing" constant="20" id="Tz2-XD-l6J"/>
                             <constraint firstItem="Qtc-ln-AcH" firstAttribute="top" secondItem="IBE-uQ-dRg" secondAttribute="bottom" constant="20" id="c0V-cm-lDd"/>
                             <constraint firstItem="M6e-kY-Dfk" firstAttribute="trailing" secondItem="Qtc-ln-AcH" secondAttribute="trailing" constant="20" id="hrm-Uk-E1g"/>
+                            <constraint firstItem="2fz-Kn-Dej" firstAttribute="bottom" secondItem="M6e-kY-Dfk" secondAttribute="bottom" constant="8" id="u7K-Jh-Ad4"/>
+                            <constraint firstItem="2fz-Kn-Dej" firstAttribute="leading" secondItem="M6e-kY-Dfk" secondAttribute="leading" constant="20" id="xte-I4-Pmj"/>
                             <constraint firstItem="IBE-uQ-dRg" firstAttribute="top" secondItem="FxG-E0-a0z" secondAttribute="bottom" constant="50" id="ye8-em-Q5w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M6e-kY-Dfk"/>
@@ -82,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="-281.15942028985512" y="105.80357142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--Need Help View Controller-->
         <scene sceneID="gpN-cL-r08">
             <objects>
-                <viewController id="mct-7T-iTS" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NeedHelpViewController" id="mct-7T-iTS" customClass="NeedHelpViewController" customModule="TakeMeHome" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Obb-cI-gA0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +150,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="house" catalog="system" width="128" height="110"/>
-        <image name="light.max" catalog="system" width="128" height="71"/>
+        <image name="house" catalog="system" width="64" height="54"/>
+        <image name="light.max" catalog="system" width="64" height="34"/>
     </resources>
 </document>
