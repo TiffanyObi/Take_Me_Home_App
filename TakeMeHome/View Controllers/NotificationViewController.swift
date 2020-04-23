@@ -4,7 +4,7 @@ import UIKit
 class NotificationViewController: UIViewController {
     
      private let center = UNUserNotificationCenter.current()
-    private var timeInterval:TimeInterval = (Date().timeIntervalSinceNow + 15)
+    private var timeInterval:TimeInterval = (Date().timeIntervalSinceNow + 10)
     
     override func viewDidLoad() {
         super.viewDidLoad()
