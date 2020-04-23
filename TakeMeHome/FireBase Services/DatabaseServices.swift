@@ -54,7 +54,8 @@ class DatabaseService {
     }
     
 
-    func updateDatabaseUser(displayName: String?, guardianAddress:String,
+    func updateDatabaseUser(displayName: String?,
+                            guardianAddress:String,
                             photoURL: String?,
                             username: String,
                             address: String,
