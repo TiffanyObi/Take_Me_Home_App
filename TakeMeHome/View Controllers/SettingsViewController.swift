@@ -68,6 +68,15 @@ class SettingsViewController: UIViewController {
     private var userInfo: UserModel? {
         didSet {
             updateSettingsWithDatabaseUserInfo()
+            displayName = userInfo?.displayName ?? ""
+            username = userInfo?.username ?? ""
+            userAddress = userInfo?.userAddress ?? ""
+            userZipcode = userInfo?.userZipcode ?? ""
+            userPhonenumber = userInfo?.userPhoneNumber ?? ""
+            guardianName = userInfo?.guardianName ?? ""
+            guardianAddress = userInfo?.guardianAddress ?? ""
+            guardianPhonenumber = userInfo?.guardianPhone ?? ""
+            guardianZipcode = userInfo?.guardianZipcode ?? ""
         }
     }
     
@@ -79,7 +88,7 @@ class SettingsViewController: UIViewController {
         configureGuardianUI()
         registerForKeyboardNotifications()
         view.addGestureRecognizer(tapGesture)
-//        updateSettingsWithDatabaseUserInfo()
+      updateSettingsWithDatabaseUserInfo()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -96,7 +105,7 @@ class SettingsViewController: UIViewController {
         guardianNameTexfield.delegate = self
         guardianAddressTextfield.delegate = self
         guardianPhoneNumberTextfield.delegate = self
-        guardianPhoneNumberTextfield.delegate = self
+        guardianZipcodeTextfield.delegate = self
     }
     
     func configureGuardianUI(){
@@ -132,16 +141,15 @@ class SettingsViewController: UIViewController {
         usernameTexfield.text = userInfo?.username
         userAddressTextfield.text = userInfo?.userAddress
         userZipcodeTextfield.text = userInfo?.userZipcode
-        userPhoneNumberTextfield.text = userPhonenumber
+        userPhoneNumberTextfield.text = userInfo?.userPhoneNumber
         guardianNameTexfield.text = userInfo?.guardianName ?? ""
-        guardianAddressTextfield.text = guardianAddress
+        guardianAddressTextfield.text = userInfo?.guardianAddress
         guardianPhoneNumberTextfield.text = userInfo?.guardianPhone ?? ""
-        guardianZipcodeTextfield.text = guardianZipcode
+        guardianZipcodeTextfield.text = userInfo?.guardianZipcode
     }
     
     @IBAction func activeGuardianSwitchToggled(_ sender: UISwitch) {
         if db.hasGardian {
-            
             sender.setOn(false, animated: true)
             db.hasGardian = false
             
@@ -162,15 +170,17 @@ class SettingsViewController: UIViewController {
     
    
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-           updateDatabaseWithUserContactInfo(with: displayName, photoURL: "", name: username, address: userAddress, zipcode: userZipcode, guardianName: guardianName, guardianPhone: guardianAddress)
+
+        
+        updateDatabaseWithUserContactInfo(with: displayName, photoURL: "", userPhoneNumber: userPhonenumber, name: username, address: userAddress, zipcode: userZipcode, guardianName: guardianName, guardianPhone: guardianPhonenumber, guardianAddress: guardianAddress, guardianZipcode: guardianZipcode)
         
         UIViewController.showViewController(storyboardName: "UserView", viewControllerID: "UserViewController")
     }
     
     
     
-    private func updateDatabaseWithUserContactInfo(with displayName: String, photoURL:String, name:String, address:String, zipcode:String,guardianName:String,guardianPhone:String){
-        database.updateDatabaseUser(displayName: displayName, photoURL: photoURL, username: name, address: address, zipcode: zipcode, coordinates: nil, guardianName: guardianName, guardianPhone: guardianPhone) { [weak self] (result) in
+    private func updateDatabaseWithUserContactInfo(with displayName: String, photoURL:String,userPhoneNumber:String, name:String, address:String, zipcode:String,guardianName:String,guardianPhone:String, guardianAddress:String,guardianZipcode:String){
+        database.updateDatabaseUser(displayName: displayName, guardianAddress: guardianAddress, photoURL: photoURL, username: name, address: address, zipcode: zipcode, userPhone: userPhonenumber, coordinates: nil, guardianName: guardianName, guardianPhone: guardianPhone, guardianZipcode: guardianZipcode) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 self?.showAlert(title: "Error Saving Contact Info: Error - \(error)", message: "Please try again later")
@@ -215,7 +225,7 @@ class SettingsViewController: UIViewController {
     guardianNameTexfield.resignFirstResponder()
     guardianAddressTextfield.resignFirstResponder()
     guardianPhoneNumberTextfield.resignFirstResponder()
-        
+        guardianZipcodeTextfield.resignFirstResponder()
         
        }
        
@@ -277,21 +287,25 @@ extension SettingsViewController: UITextFieldDelegate {
         }
         if textField == guardianNameTexfield {
             let guardianNameText = guardianNameTexfield.text
-            guardianName = guardianNameText ?? "no guardian name"
+            guardianName = guardianNameText ?? ""
                    print(guardianName)
         }
         if textField == guardianAddressTextfield {
          let guardianAddressText = guardianAddressTextfield.text
-            guardianAddress = guardianAddressText ?? "no guardian address"
+            guardianAddress = guardianAddressText ?? ""
                    print(guardianAddress)
         }
         if textField == guardianPhoneNumberTextfield {
         let guardianPhonenumberText = guardianPhoneNumberTextfield.text
-            guardianPhonenumber = guardianPhonenumberText ?? "no guardian phone number"
+            guardianPhonenumber = guardianPhonenumberText ?? ""
                    print(guardianPhonenumber)
         }
-        
+        if textField == guardianZipcodeTextfield {
+            let guardianZipCodeText = guardianZipcodeTextfield.text
+        guardianZipcode = guardianZipCodeText ?? ""
+            print(guardianZipcode)
     
     }
     
+}
 }
