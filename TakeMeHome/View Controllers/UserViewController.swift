@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class UserViewController: UIViewController {
     
@@ -18,7 +20,7 @@ class UserViewController: UIViewController {
             print(userInfo.username)
             print(userInfo.email)
             db.pin = userInfo.pin
-            
+            userInfo.userAddress
             if userInfo.hasGuaridan == "True" {
                 db.hasGardian = true
             }
@@ -30,12 +32,16 @@ class UserViewController: UIViewController {
         fetchUserInfo()
     }
     
+    
+    
+    
+    @IBAction func takeMeHomePressed(_ sender: UIButton) {
+        
+    }
     @IBAction func optionButtonPressed(_ sender: UIButton) {
         if db.hasGardian {
             UIViewController.showViewController(storyboardName: "Pin", viewControllerID: "PinController")
         } else {
-//            authSession.signoutCurrentUser()
-//            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
             UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
         }
         
