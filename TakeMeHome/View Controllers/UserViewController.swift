@@ -34,9 +34,9 @@ class UserViewController: UIViewController {
         if db.hasGardian {
             UIViewController.showViewController(storyboardName: "Pin", viewControllerID: "PinController")
         } else {
-            authSession.signoutCurrentUser()
-            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
-            //UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
+//            authSession.signoutCurrentUser()
+//            UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "LoginViewController")
+            UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
         }
         
     }

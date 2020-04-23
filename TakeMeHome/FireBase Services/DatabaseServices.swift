@@ -54,20 +54,21 @@ class DatabaseService {
     }
     
 
-    func updateDatabaseUser(displayName: String?,
+    func updateDatabaseUser(displayName: String?, guardianAddress:String,
                             photoURL: String?,
                             username: String,
                             address: String,
                             zipcode: String,
+                            userPhone:String,
                             coordinates: String?,
                             guardianName: String?,
-                            guardianPhone: String?,
+                            guardianPhone: String?,guardianZipcode:String,
                             completion: @escaping (Result<Bool, Error>) -> ()) {
         guard let user = Auth.auth().currentUser else { return }
         db.collection(DatabaseService.usersCollection)
             .document(user.uid).updateData([
-                "userID": user.uid,
-                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": username, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name", "guardianPhone":guardianPhone ?? "no guardian phone number"] ) { (error) in
+                "userID": user.uid, "guardianAddress":guardianAddress,
+                "photoURL" : photoURL ?? "", "displayName" : displayName ?? "", "username": username, "userAddress":address,"userZipcode":zipcode, "guardianName":guardianName ?? "no guardian name","guardianZipcode":guardianZipcode, "guardianPhone":guardianPhone ?? "no guardian phone number","userPhone":userPhone] ) { (error) in
                     if let error = error {
                         completion(.failure(error))
                     } else {
