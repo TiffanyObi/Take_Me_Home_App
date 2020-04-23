@@ -28,7 +28,6 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserInfo()
-        authSession.signoutCurrentUser()
     }
     
     @IBAction func optionButtonPressed(_ sender: UIButton) {
