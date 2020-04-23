@@ -60,7 +60,6 @@
                                 <state key="normal" title="Take Me Home" backgroundImage="house" catalog="system"/>
                                 <connections>
                                     <action selector="takeMeHomePressed:" destination="V72-vh-E4t" eventType="touchUpInside" id="ClQ-Sj-H45"/>
-                                    <segue destination="h7C-cF-yfX" kind="presentation" id="TAE-vh-BhQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qtc-ln-AcH">
@@ -78,6 +77,9 @@
                                 <rect key="frame" x="20" y="820" width="150" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Get Location"/>
+                                <connections>
+                                    <segue destination="h7C-cF-yfX" kind="presentation" id="mFx-g1-uW1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQf-Uu-TMT">
                                 <rect key="frame" x="256" y="825" width="138" height="38"/>

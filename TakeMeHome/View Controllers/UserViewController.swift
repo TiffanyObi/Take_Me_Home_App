@@ -14,7 +14,8 @@ class UserViewController: UIViewController {
     
     private var db = DatabaseService.shared
     private var authSession = AuthenticationService()
-    
+    private var coreLocation = CoreLocationSession()
+        
     private var userInfo: UserModel! {
         didSet {
             print(userInfo.username)
@@ -36,7 +37,7 @@ class UserViewController: UIViewController {
     
     
     @IBAction func takeMeHomePressed(_ sender: UIButton) {
-        
+        turnByturn()
     }
     @IBAction func optionButtonPressed(_ sender: UIButton) {
         if db.hasGardian {
@@ -44,6 +45,16 @@ class UserViewController: UIViewController {
         } else {
             UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
         }
+        
+    }
+    
+    
+       func turnByturn(){
+//       coreLocation.convertPlacemarkToCooderinate(addressString: userInfo.userAddress)
+        let placeMark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.6430471, longitude: -73.9359625), addressDictionary: nil) //(Tiffs house coorinates)
+            let mapItem = MKMapItem(placemark: placeMark)//placemark
+        mapItem.name = "Home"
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeWalking])
         
     }
     
