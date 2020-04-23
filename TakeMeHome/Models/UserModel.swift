@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 struct UserModel {
     let userID:String
     let pin:String
@@ -45,3 +46,17 @@ extension UserModel {
         self.guardianPhotoURL = dictionary["guardianPhotoURL"] as? String ?? "no guardian photoURL"
     }
 }
+
+
+struct SimulateNotification{
+    
+    var totalSeconds: Int
+    
+    var seconds : Int {
+        return totalSeconds % 60
+    }
+}
+
+
+
+

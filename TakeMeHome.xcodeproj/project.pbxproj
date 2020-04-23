@@ -19,7 +19,7 @@
 		3E3EDC4B244E0F8000EF2A6E /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC4A244E0F8000EF2A6E /* SelectionViewController.swift */; };
 		3E3EDC4D244E0F9300EF2A6E /* ConfigureUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC4C244E0F9300EF2A6E /* ConfigureUserViewController.swift */; };
 		3E3EDC4F244E0FE900EF2A6E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC4E244E0FE900EF2A6E /* SettingsViewController.swift */; };
-		3E3EDC51244E110600EF2A6E /* GuardianViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC50244E110600EF2A6E /* GuardianViewController.swift */; };
+		3E3EDC51244E110600EF2A6E /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC50244E110600EF2A6E /* NotificationViewController.swift */; };
 		3E3EDC53244E113500EF2A6E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC52244E113500EF2A6E /* UserViewController.swift */; };
 		3E3EDC55244E122900EF2A6E /* Login_Selection_AppState.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EDC54244E122900EF2A6E /* Login_Selection_AppState.storyboard */; };
 		3E3EDC57244E13A100EF2A6E /* SettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EDC56244E13A100EF2A6E /* SettingsView.storyboard */; };
@@ -35,6 +35,7 @@
 		3E3EDC6B244E15BD00EF2A6E /* CoreLocationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC6A244E15BD00EF2A6E /* CoreLocationSession.swift */; };
 		3E3EDC6D2450927B00EF2A6E /* Pin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E3EDC6C2450927B00EF2A6E /* Pin.storyboard */; };
 		3E3EDC6F2450929D00EF2A6E /* PinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3EDC6E2450929D00EF2A6E /* PinController.swift */; };
+		3E8B7EAB2451F7D000E7AE14 /* swift-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E8B7EAA2451F7D000E7AE14 /* swift-logo.png */; };
 		6ECB25FB1C6514A4BA30BEB0 /* Pods_TakeMeHome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 016BB1104841CBF07BA0DE05 /* Pods_TakeMeHome.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +56,7 @@
 		3E3EDC4A244E0F8000EF2A6E /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		3E3EDC4C244E0F9300EF2A6E /* ConfigureUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureUserViewController.swift; sourceTree = "<group>"; };
 		3E3EDC4E244E0FE900EF2A6E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		3E3EDC50244E110600EF2A6E /* GuardianViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardianViewController.swift; sourceTree = "<group>"; };
+		3E3EDC50244E110600EF2A6E /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		3E3EDC52244E113500EF2A6E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		3E3EDC54244E122900EF2A6E /* Login_Selection_AppState.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login_Selection_AppState.storyboard; sourceTree = "<group>"; };
 		3E3EDC56244E13A100EF2A6E /* SettingsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsView.storyboard; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		3E3EDC6A244E15BD00EF2A6E /* CoreLocationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationSession.swift; sourceTree = "<group>"; };
 		3E3EDC6C2450927B00EF2A6E /* Pin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pin.storyboard; sourceTree = "<group>"; };
 		3E3EDC6E2450929D00EF2A6E /* PinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinController.swift; sourceTree = "<group>"; };
+		3E8B7EAA2451F7D000E7AE14 /* swift-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "swift-logo.png"; sourceTree = "<group>"; };
 		C947C0A6F90DE5CE85D76966 /* Pods-TakeMeHome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeHome.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeHome/Pods-TakeMeHome.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				3E3EDC48244E0E7A00EF2A6E /* CoreLocation Manager */,
 				3E3EDC47244E0E6600EF2A6E /* FireBase Services */,
 				3E3EDC44244E0E3A00EF2A6E /* Models */,
+				3E8B7EAA2451F7D000E7AE14 /* swift-logo.png */,
 				3E3EDC46244E0E5900EF2A6E /* Cells */,
 				3E3EDC43244E0E2200EF2A6E /* View Controllers */,
 				3E3EDC45244E0E4800EF2A6E /* Storyboards */,
@@ -147,7 +150,7 @@
 				3E3EDC4E244E0FE900EF2A6E /* SettingsViewController.swift */,
 				3E3EDC4A244E0F8000EF2A6E /* SelectionViewController.swift */,
 				3E3EDC4C244E0F9300EF2A6E /* ConfigureUserViewController.swift */,
-				3E3EDC50244E110600EF2A6E /* GuardianViewController.swift */,
+				3E3EDC50244E110600EF2A6E /* NotificationViewController.swift */,
 				3E3EDC52244E113500EF2A6E /* UserViewController.swift */,
 				2EF42F5324510CE8006ECCFA /* MapViewController.swift */,
 				2EF42F5524510D51006ECCFA /* NeedHelpViewController.swift */,
@@ -281,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E8B7EAB2451F7D000E7AE14 /* swift-logo.png in Resources */,
 				3E3EDC39244E074800EF2A6E /* LaunchScreen.storyboard in Resources */,
 				3E3EDC57244E13A100EF2A6E /* SettingsView.storyboard in Resources */,
 				3E3EDC59244E13B800EF2A6E /* GuardianView.storyboard in Resources */,
@@ -357,7 +361,7 @@
 				3E3EDC67244E156800EF2A6E /* UserModel.swift in Sources */,
 				3E3EDC5D244E13F400EF2A6E /* DatabaseServices.swift in Sources */,
 				3E3EDC65244E14AE00EF2A6E /* Empty.swift in Sources */,
-				3E3EDC51244E110600EF2A6E /* GuardianViewController.swift in Sources */,
+				3E3EDC51244E110600EF2A6E /* NotificationViewController.swift in Sources */,
 				3E3EDC5F244E140900EF2A6E /* AuthenticationService.swift in Sources */,
 				3E3EDC61244E143500EF2A6E /* UIViewController+Navigation.swift in Sources */,
 				3E3EDC69244E15A700EF2A6E /* EmptyCell.swift in Sources */,

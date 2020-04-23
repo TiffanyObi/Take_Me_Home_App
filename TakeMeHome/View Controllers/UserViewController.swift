@@ -15,7 +15,8 @@ class UserViewController: UIViewController {
     private var db = DatabaseService.shared
     private var authSession = AuthenticationService()
     private var coreLocation = CoreLocationSession()
-        
+     private let center = UNUserNotificationCenter.current()
+        private var notification = NotificationViewController()
     private var userInfo: UserModel! {
         didSet {
             print(userInfo.username)
@@ -28,9 +29,15 @@ class UserViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+         notification.checkNotificationAuthorization()
+        center.delegate = self
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserInfo()
+       
+        notification.createLocalNotifications(with: "User has left the building")
     }
     
     
@@ -72,4 +79,10 @@ class UserViewController: UIViewController {
     }
     
     
+}
+
+extension UserViewController: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
 }
