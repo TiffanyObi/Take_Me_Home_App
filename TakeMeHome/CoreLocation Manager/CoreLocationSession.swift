@@ -66,9 +66,9 @@ class CoreLocationSession: NSObject {
     
     
     
-  public func convertPlaceNameToCoordinate(addressString: String) {
+    public func convertPlaceNameToCoordinate(addressString: String) {
     // coverting an address to a coordinate
-    CLGeocoder().geocodeAddressString(addressString) { (placemarks, error) in
+  CLGeocoder().geocodeAddressString(addressString) { (placemarks, error) in
       if let error = error {
         print("geocodeAddressString: \(error)")
       }
