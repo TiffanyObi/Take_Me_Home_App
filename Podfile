@@ -8,5 +8,9 @@ target 'TakeMeHome' do
   # Pods for TakeMeHome
 
 pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'FirebaseFirestoreSwift'
+
 
 end
