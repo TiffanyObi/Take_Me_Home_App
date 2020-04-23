@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     private let locationSession = CoreLocationSession()
     var annotation = MKPointAnnotation()
     
-    
+    var userInfo: UserModel!
     override func viewDidLoad() {
         super.viewDidLoad()
 //        loadMapView()
@@ -27,6 +27,7 @@ class MapViewController: UIViewController {
      
         mapView.showsUserLocation = true
         mapView.delegate = self
+        
         
        
     }
@@ -48,7 +49,7 @@ class MapViewController: UIViewController {
            
     
             mapView.setRegion(region, animated: false)
-            mapView.userLocation.title = "User Location"
+            mapView.userLocation.title = "User's Current Location"
                         }
      
     }

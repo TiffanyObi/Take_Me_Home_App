@@ -20,9 +20,10 @@ class UserViewController: UIViewController {
     private var userInfo: UserModel! {
         didSet {
             print(userInfo.username)
+              
             print(userInfo.email)
             db.pin = userInfo.pin
-            userInfo.userAddress
+            print(userInfo.userAddress)
             if userInfo.hasGuaridan == "True" {
                 db.hasGardian = true
             }
@@ -37,7 +38,7 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
         fetchUserInfo()
        
-        notification.createLocalNotifications(with: "User has left the building")
+      
     }
     
     
@@ -53,6 +54,11 @@ class UserViewController: UIViewController {
             UIViewController.showViewController(storyboardName: "SettingsView", viewControllerID: "SettingsViewController")
         }
         
+    }
+    
+    
+    @IBAction func pushNotificationForDemo(_ sender: UIButton) {
+        notification.createLocalNotifications(with: "\(userInfo.username.uppercased()) is OVER 100ft AWAY !!")
     }
     
     
