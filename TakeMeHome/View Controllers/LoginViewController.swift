@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
         passwordTextField.addTarget(self, action: #selector(enterPressed), for: .editingDidEndOnExit)
+        passwordTextField.isSecureTextEntry = true
     }
     
     @objc func enterPressed() {
@@ -46,7 +47,7 @@ class LoginViewController: UIViewController {
                 }
               case .success:
                 DispatchQueue.main.async {
-                    UIViewController.showViewController(storyboardName: "Login_Selection_AppState", viewControllerID: "UserViewController")
+                    UIViewController.showViewController(storyboardName: "UserView", viewControllerID: "UserViewController")
                 }
               }
             }
@@ -69,4 +70,3 @@ class LoginViewController: UIViewController {
         }
     }
 }
-

@@ -15,30 +15,24 @@ import CoreLocation
 class CoreLocationSession: NSObject {
   
   public var locationManager: CLLocationManager
-//    var user: UserModel!
-//    var user = UserModel(userID: user.userID, email: user.email, username: user.username, userAddress: user.userAddress, userZipcode: user.userZipcode, userPhotoURL: user.userPhotoURL, displayName: user.displayName, guardianName: user.guardianName, guardianPhone: user.guardianPhone, guardianPhotoURL: user.guardianPhotoURL)
     
+
   override init() {
-    locationManager = CLLocationManager()
-//    user = UserModel(userID: user.userID, email: user.email, username: user.username, userAddress: user.userAddress, userZipcode: user.userZipcode, userPhotoURL: user.userPhotoURL, displayName: user.displayName, guardianName: user.guardianName, guardianPhone: user.guardianPhone, guardianPhotoURL: user.guardianPhotoURL)
-    super.init()
-    locationManager.delegate = self
-    
-    // request the user's location
-    locationManager.requestAlwaysAuthorization()
-    locationManager.requestWhenInUseAuthorization()
-    
+  locationManager = CLLocationManager()
+  super.init()
+  locationManager.delegate = self
+  
+  // request the user's location
+  locationManager.requestAlwaysAuthorization()
+  locationManager.requestWhenInUseAuthorization()
+
     // the following keys needs to be added to the info.plist file
     /*
      NSLocationAlwaysAndWhenInUseUsageDescription
      NSLocationWhenInUseUsageDescription
     */
-    
-    
-    // get updates for user location
-    // more aggressive solution of GPS data collection
+
     //locationManager.startUpdatingLocation()
-    
    
     startSignificantLocationChanges()
 //    startMonitoringRegion()
@@ -50,7 +44,6 @@ class CoreLocationSession: NSObject {
      
       return
     }
-    
     locationManager.startMonitoringSignificantLocationChanges()
   }
   
@@ -89,33 +82,46 @@ class CoreLocationSession: NSObject {
   
  
     
-       
-//    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-//        if let region = region as? CLCircularRegion {
-//            let identifier = region.identifier
-//            triggerTaskAssociatedWithRegionIdentifier(regionID: identifier)
-//        }
-//    }
     
    
-//}
+
     
-//   public func getCoordinate( addressString : String,
-//            completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
-//        let geocoder = CLGeocoder()
-//        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
-//            if error == nil {
-//                if let placemark = placemarks?[0] {
-//                    let location = placemark.location!
-//
-//                    completionHandler(location.coordinate, nil)
-//                    return
-//                }
-//            }
-//
-//            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
-//        }
-//    }
+   public func getCoordinate( addressString : String,
+            completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    let location = placemark.location!
+
+                    completionHandler(location.coordinate, nil)
+                    return
+                }
+            }
+
+            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+        }
+    }
+
+    public func convertPlacemarkToCooderinate(addressString:String){
+        CLGeocoder().geocodeAddressString(addressString) { (placemarks, error) in
+            if let error = error {
+                print("geocodeAddressStringError: \(error)")
+            }
+            
+            if let firstPlacemark = placemarks?.first,
+                let location = firstPlacemark.location {
+                print("placemark coordinate is \(location.coordinate)")
+            }
+        }
+    }
+       
+    
+   
+    
+  
+
+
 }
 
 extension CoreLocationSession: CLLocationManagerDelegate {
